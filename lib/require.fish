@@ -79,6 +79,8 @@ function require
   end
 
   for conf in $conf_path
+    echo $conf | read --delimiter '/' -la components
+    set path (printf '/%s' $components[1..-3])
     source $conf
   end
 
